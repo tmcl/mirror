@@ -21,7 +21,9 @@ Since many things transitively depend on `Win32`, it will rebuild a lot of thing
 I encounter a problem rebuild time, complaining HsTimeConfig.h not being found, 
 since it is generated in `dist-newstyle/.../include` but it only looks for it in 
 other locations. I work around that by copying it into a location it does search 
-for manually.
+for manually. (Perhaps due to https://github.com/haskell/cabal/issues/5223 which
+has a fix marked as merged, but perhaps that only affects the future, whereas we
+are in the past because reflex does not support ghc 8.10.)
 
 ## other things, limitations etc
 See the README.md in the package for more relevant info.
