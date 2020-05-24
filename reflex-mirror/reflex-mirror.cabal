@@ -15,7 +15,7 @@ description: Reflex + Win32 = a Mirror. A simple binding between Win32 and
 license: GPL-3
 license-file:        LICENSE
 author:              Tristan
-maintainer:          cassowary@fastmail.fm
+maintainer:          tmcl@tmcl.dev
 -- copyright:
 -- category:
 extra-source-files: 
@@ -26,6 +26,7 @@ extra-source-files:
   example-resources/resource.h
 
 -- this is required to get my own manifest rather than ghc's one.
+build-type: Custom
 custom-setup
   setup-depends: base >=4.10.0.0 && <5
                , Cabal >=2.4 
