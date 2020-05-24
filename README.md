@@ -31,7 +31,7 @@ is fixed, but perhaps the fix hasn't got into ghc 8.8.3.)
 cabal get time-1.9.3
 notepad cabal.project # append time-1.9.3
 notepad time-1.9.3/time.cabal # delete all tests, since the cause a circular dependency
-cp $env:PATH/dist-newstyle/build/x86_64-windows/ghc-8.8.3/time-1.9.3/build/lib/include/HsTimeConfig.h time-1.9.3/lib/include
+cp "$pwd/dist-newstyle/build/x86_64-windows/ghc-8.8.3/time-1.9.3/build/lib/include/HsTimeConfig.h" time-1.9.3/lib/include
 ```
 
 Obviously, this requires you to build it twice: once it will fail but it will 
