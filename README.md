@@ -23,3 +23,11 @@ for manually.
 
 ## other things, limitations etc
 See the README.md in the package for more relevant info.
+
+## Reflex.Host.Basic
+
+Reflex.Host.Basic was invaluable in this process. I converted the Host1..5.hs files 
+into Win32 to help me get there. Whether they still compile or not, I do not know, 
+but they are included in the reflx-host-basic-Win32 folder for reference.
+
+https://github.com/qfpl/reflex-basic-host/
