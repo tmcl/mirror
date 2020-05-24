@@ -1,0 +1,7 @@
+[submodule "Win32"]
+	path = Win32
+	url = git@github.com:tmcl/Win32
+	branch = extras
+[submodule "win32-dpi"]
+	path = win32-dpi
+	url = git@github.com:tmcl/win32-dpi
