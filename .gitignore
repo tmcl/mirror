@@ -1,0 +1,4 @@
+﻿.*.sw?
+dist-newstyle
+*.o
+ghcid.txt
