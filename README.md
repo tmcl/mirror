@@ -1,7 +1,9 @@
 # mirror
 reflex-mirror = Reflex.Win32, bindings between Reflex and Win32
 
-A binding between Reflex (0.7.0) and Win32. Requires a custom branch of Win32, see the included submodule.
+A binding between Reflex (0.7.0) and Win32. Requires a custom branch of Win32 (for extra 
+bindings - these should mostly get merged back into Win32 but I haven't got around to 
+filing the pr's yet), see the included submodule.
 
 ## Install
 Install `choco` first.
