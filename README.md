@@ -6,25 +6,26 @@ bindings - these should mostly get merged back into Win32 but I haven't got arou
 filing the pr's yet), see the included submodule.
 
 ## Install
-Install `choco` first.
+Install `choco`/Chocolatey first.
 
 Then you should be able to do:
 
 ```powershell
+(as admin)
 choco install --version 8.8.3 ghc
 choco install haskell-dev
-(update path, etc)
+
+(as regular user in a fresh shell)
 cabal new-build counter
 ```
 
 Since many things transitively depend on `Win32`, it will rebuild a lot of things. 
 
-I encounter a problem rebuild time, complaining HsTimeConfig.h not being found, 
-since it is generated in `dist-newstyle/.../include` but it only looks for it in 
-other locations. I work around that by copying it into a location it does search 
-for manually. (Perhaps due to https://github.com/haskell/cabal/issues/5223 which
-has a fix marked as merged, but perhaps that only affects the future, whereas we
-are in the past because reflex does not support ghc 8.10.)
+I encounter a problem rebuilding `time`, complaining that it cannot find `HsTimeConfig.h`. 
+The file is generated in `dist-newstyle/.../time-1.9.3/lib/include` but it only 
+looks for it in the source. I work around that by copying it into the source manually,
+see below. (Probably caused by https://github.com/haskell/cabal/issues/5223 which
+is fixed, but perhaps the fix hasn't got into ghc 8.8.3.)
 
 ```powershell
 cabal get time-1.9.3
