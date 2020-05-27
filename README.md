@@ -6,22 +6,39 @@ bindings - these should mostly get merged back into Win32 but I haven't got arou
 filing the pr's yet), see the included submodule.
 
 ## Install
-Install `choco` first.
+Install `choco`/Chocolatey first.
 
 Then you should be able to do:
 
 ```powershell
+(as admin)
 choco install --version 8.8.3 ghc
 choco install haskell-dev
-(update path, etc)
-cabal new-run counter 
+
+(as regular user in a fresh shell)
+cabal new-build counter
 ```
 
 Since many things transitively depend on `Win32`, it will rebuild a lot of things. 
-I encounter a problem rebuild time, complaining HsTimeConfig.h not being found, 
-since it is generated in `dist-newstyle/.../include` but it only looks for it in 
-other locations. I work around that by copying it into a location it does search 
-for manually.
+
+I encounter a problem rebuilding `time`, complaining that it cannot find `HsTimeConfig.h`. 
+The file is generated in `dist-newstyle/.../time-1.9.3/lib/include` but it only 
+looks for it in the source. I work around that by copying it into the source manually,
+see below. (Probably caused by https://github.com/haskell/cabal/issues/5223 which
+is fixed, but perhaps the fix hasn't got into ghc 8.8.3.)
+
+```powershell
+cabal get time-1.9.3
+notepad cabal.project # append time-1.9.3
+notepad time-1.9.3/time.cabal # delete all tests, since the cause a circular dependency
+cp "$pwd/dist-newstyle/build/x86_64-windows/ghc-8.8.3/time-1.9.3/build/lib/include/HsTimeConfig.h" time-1.9.3/lib/include
+```
+
+Obviously, this requires you to build it twice: once it will fail but it will 
+produce the HsTimeConfig.h file so you can copy it, and then you can use it.
+
+It seems like there should be other ways to get that to work 
+e.g. --extra-include-dirs, but I wasn't able to get that to work.
 
 ## other things, limitations etc
 See the README.md in the package for more relevant info.
