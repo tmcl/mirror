@@ -67,7 +67,8 @@ executable counter
   main-is: Main.hs
   other-modules: Resources
   hs-source-dirs: example/counter, example/resources
-  ghc-options: -Wall -Werror -fno-gen-manifest example-resources/res.o -optl-mwindows
+  ghc-options: -Wall -Werror -fno-gen-manifest example-resources/res.o 
+  ghc-options:  -optl-mwindows
   default-language: Haskell2010
   include-dirs: example-resources
   build-depends:       

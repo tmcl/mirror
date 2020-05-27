@@ -93,3 +93,4 @@ data Message = Message
     wmWparam :: Graphics.Win32.WPARAM,
     wmLparam :: Graphics.Win32.LPARAM
   }
+  deriving (Show, Eq)

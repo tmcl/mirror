@@ -24,6 +24,7 @@ module Reflex.Win32.Window
   , WindowSizeInUserControlled(..)
   , WindowSizeInCodeControlled(..)
   , WindowSizeOutUserControlled(..)
+  , WindowSizeOutCodeControlled(..)
   , WindowOut(..)
   , WindowClassIdentifier(..)
   , click
@@ -60,7 +61,7 @@ import Reflex.Win32.Host
 import Graphics.Win32.Toolbar (tOOLBARCLASSNAME)
 import qualified Win32.Utils as Win32UtilsMessage (Message(..))
 
-type Win32Window t m a = ReaderT (Win32WindowEnv t) (Win32Guest t m) a
+type Win32Window t m = ReaderT (Win32WindowEnv t) (Win32Guest t m)
 data Win32WindowEnv t = Win32WindowEnv 
   { wcParent :: IO (Maybe HWND)
   , wcParentMessages :: WindowMessage -> Reflex.Event t Message
